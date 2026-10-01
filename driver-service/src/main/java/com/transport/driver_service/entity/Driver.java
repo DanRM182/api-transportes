@@ -24,15 +24,15 @@ public class Driver {
 
     private static String validateString(String data, String message) {
         if(data == null || data.isBlank())
-            throw new IllegalStateException(message);
+            throw new IllegalArgumentException(message);
 
-        return data;
+        return data.trim();
     }
 
     private Driver(String name, String licenseNumber) {
-        this.name = validateString(name.trim(),
+        this.name = validateString(name,
                 "El nombre del conductor es requerido");
-        this.licenseNumber = validateString(licenseNumber.trim(),
+        this.licenseNumber = validateString(licenseNumber,
                 "El número de licencia es requerido");
     }
 

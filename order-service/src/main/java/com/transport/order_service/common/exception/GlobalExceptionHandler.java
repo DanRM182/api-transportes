@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
-    @ExceptionHandler(IllegalArgumentException.class)
+    @ExceptionHandler(IllegalOrderStatusTransition.class)
     public ResponseEntity<CustomErrorResponse> handleIllegalOrderStatusTransition(IllegalOrderStatusTransition e) {
         log.warn("Transición de estado de orden no permitida: {}", e.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT)
@@ -24,6 +24,14 @@ public class GlobalExceptionHandler {
         log.warn("El recurso no fue encontrado: {}", e.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(new CustomErrorResponse(HttpStatus.NOT_FOUND.value(), e.getMessage()));
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<CustomErrorResponse> handleIllegalArgumentException(IllegalArgumentException e) {
+        log.error("Error en la petición: {}", e.getMessage());
+        return ResponseEntity.badRequest().body(
+                new CustomErrorResponse(HttpStatus.BAD_REQUEST.value(), e.getMessage())
+        );
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
