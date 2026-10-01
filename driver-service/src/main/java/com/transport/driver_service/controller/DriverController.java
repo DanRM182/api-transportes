@@ -36,7 +36,7 @@ public class DriverController {
     }
 
     @PostMapping
-    @Operation(summary = "Registrar nuevo conductor")
+    @Operation(summary = "Registrar conductor")
     public ResponseEntity<DriverResponse> create(
             @Valid @RequestBody CreateDriverRequest request
     ) {
