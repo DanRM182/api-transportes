@@ -4,6 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 .env
+.idea/**
 
 ### STS ###
 .apt_generated
