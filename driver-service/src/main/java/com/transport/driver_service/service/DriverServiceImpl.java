@@ -1,7 +1,10 @@
 package com.transport.driver_service.service;
 
+import com.transport.driver_service.common.exception.DuplicateResourceException;
+import com.transport.driver_service.common.exception.ResourceNotFoundException;
 import com.transport.driver_service.dto.request.CreateDriverRequest;
 import com.transport.driver_service.dto.response.DriverResponse;
+import com.transport.driver_service.entity.Driver;
 import com.transport.driver_service.mapper.DriverMapper;
 import com.transport.driver_service.repository.DriverRepository;
 import lombok.AllArgsConstructor;
@@ -22,23 +25,45 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public DriverResponse create(CreateDriverRequest request) {
+        validateUniqueLicenseNumber(request.licenseNumber());
+
         log.info("Registrando nuevo conductor: {}", request.name());
 
-        return null;
+        Driver driver = driverMapper.toEntity(request);
+
+        Driver savedDriver = driverRepository.save(driver);
+
+        log.info("Nuevo conductor registrado con id: {}", savedDriver.getId());
+
+        return driverMapper.toResponse(savedDriver);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<DriverResponse> listActiveDrivers() {
-        return List.of();
+        log.info("Listando todos los conductores activos");
+
+        return driverRepository.findByActiveTrue().stream()
+                .map(driverMapper::toResponse).toList();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public DriverResponse findActiveDriver(UUID id) {
-        return null;
+        log.info("Buscar conductor activo por id {}", id);
+
+        return driverMapper.toResponse(findActiveDriverById(id));
     }
 
     private void validateUniqueLicenseNumber(String licenseNumber) {
         if(driverRepository.existsByLicenseNumber(licenseNumber))
-            throw new
+            throw new DuplicateResourceException(
+                    "La licencia de conducir está duplicada");
+    }
+
+    private Driver findActiveDriverById(UUID id) {
+        return driverRepository.findByIdAndActiveTrue(id)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Conductor activo no encontrado con id: " + id));
     }
 }
