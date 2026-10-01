@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<CustomErrorResponse> handleIllegalArgumentException(IllegalArgumentException e) {
-        log.error("Error en la petición: {}", e.getMessage());
+        log.error("Argumento inválido: {}", e.getMessage());
         return ResponseEntity.badRequest().body(
                 new CustomErrorResponse(HttpStatus.BAD_REQUEST.value(), e.getMessage())
         );
