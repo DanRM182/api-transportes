@@ -1,4 +1,4 @@
-package com.transport.driver_service.dto;
+package com.transport.driver_service.common.response;
 
 public record CustomErrorResponse(
         int code,
