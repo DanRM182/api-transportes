@@ -3,8 +3,6 @@ package com.transport.order_service.enums;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
-@Getter
 public enum OrderStatus {
     CREATED,
     IN_TRANSIT,
@@ -13,8 +11,8 @@ public enum OrderStatus {
 
     public boolean canTransitionTo(OrderStatus nuevoStatus) {
         return switch (this) {
-            case CREATED -> nuevoStatus == IN_TRANSIT ||
-                    nuevoStatus == CANCELLED;
+            case CREATED -> (nuevoStatus == IN_TRANSIT ||
+                    nuevoStatus == CANCELLED);
 
             case IN_TRANSIT -> nuevoStatus == DELIVERED;
 

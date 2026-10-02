@@ -46,7 +46,7 @@ public class Order {
             );
         }
 
-        if(!this.status.canTransitionTo(status))
+        if(!this.status.canTransitionTo(newStatus))
             throw new IllegalOrderStatusTransition(
                     "No se puede pasar de status: " + this.status.name()
             + " a " + newStatus.name());
