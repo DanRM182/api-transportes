@@ -8,8 +8,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.UUID;
 
@@ -31,5 +33,23 @@ public class OrderAssignmentController {
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(response);
+    }
+
+    @PatchMapping(value = "/pdf", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @Operation(summary = "Agregar PDF a la asignación")
+    public ResponseEntity<OrderAssignmentResponse> addPdf(
+            @PathVariable UUID orderId,
+            @RequestPart("file") MultipartFile file
+    ) {
+        return ResponseEntity.ok(orderAssignmentService.addPdf(orderId, file));
+    }
+
+    @PatchMapping(value = "/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @Operation(summary = "Agregar imagen a la asignación")
+    public ResponseEntity<OrderAssignmentResponse> addImage(
+            @PathVariable UUID orderId,
+            @RequestPart("file") MultipartFile file
+    ) {
+        return ResponseEntity.ok(orderAssignmentService.addImage(orderId, file));
     }
 }
