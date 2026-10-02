@@ -30,6 +30,7 @@ public class Driver {
     }
 
     private Driver(String name, String licenseNumber) {
+        this.active = true;
         this.name = validateString(name,
                 "El nombre del conductor es requerido");
         this.licenseNumber = validateString(licenseNumber,
