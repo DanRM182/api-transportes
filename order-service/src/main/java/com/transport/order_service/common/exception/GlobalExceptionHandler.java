@@ -41,6 +41,13 @@ public class GlobalExceptionHandler {
                 .body(new CustomErrorResponse(HttpStatus.SERVICE_UNAVAILABLE.value(), e.getMessage()));
     }
 
+    @ExceptionHandler(OrderAlreadyAssignedException.class)
+    public ResponseEntity<CustomErrorResponse> handleOrderAlreadyAssigned(OrderAlreadyAssignedException e) {
+        log.warn("Conflicto de asignación: {}", e.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(new CustomErrorResponse(HttpStatus.CONFLICT.value(), e.getMessage()));
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<CustomErrorResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         String mensaje = e.getBindingResult().getFieldErrors().stream()
