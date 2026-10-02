@@ -33,5 +33,5 @@ public record OrderAssignmentResponse(
                 description = "Dirección de almacenamiento de la imagen",
                 example = "/example/example.png"
         )
-        String imagePaths
+        String imagePath
 ) { }

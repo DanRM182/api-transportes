@@ -76,7 +76,7 @@ public class OrderAssignmentServiceImpl implements OrderAssignmentService {
     public OrderAssignmentResponse addImage(UUID orderId, MultipartFile file) {
         OrderAssignment assignment = findAssignmentByOrderId(orderId);
 
-        String path = fileStorageService.storePdf(file);
+        String path = fileStorageService.storeImage(file);
 
         assignment.addImage(path);
 

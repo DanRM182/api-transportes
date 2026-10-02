@@ -18,6 +18,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -226,7 +227,7 @@ class OrderAssignmentServiceImplTest {
         when(orderAssignmentRepository.findByOrderId(orderId))
                 .thenReturn(Optional.of(assignment));
 
-        when(fileStorageService.storeImage(file))
+        when(fileStorageService.storeImage(any(MultipartFile.class)))
                 .thenReturn("image.jpg");
 
         when(orderAssignmentRepository.save(assignment))
@@ -265,5 +266,4 @@ class OrderAssignmentServiceImplTest {
 
         verifyNoInteractions(fileStorageService);
     }
-
 }
