@@ -1,4 +1,4 @@
-package com.transport.driver_service.dto.response;
+package com.transport.order_service.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
