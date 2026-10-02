@@ -104,7 +104,7 @@ public class OrderAssignmentServiceImpl implements OrderAssignmentService {
 
     private void validateOrderIdInExistentOrderAssignments(UUID orderId) {
         if(orderAssignmentRepository.existsByOrderId(orderId))
-            throw new IllegalArgumentException("Ya hay un conductor asignado a la orden");
+            throw new OrderAlreadyAssignedException("Ya hay un conductor asignado a la orden");
     }
 
     private OrderAssignment findAssignmentByOrderId(UUID orderId) {
