@@ -4,6 +4,7 @@ package com.transport.order_service.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.transport.order_service.dto.request.AssignDriverRequest;
 import com.transport.order_service.dto.response.OrderAssignmentResponse;
+import com.transport.order_service.security.JwtService;
 import com.transport.order_service.services.OrderAssignmentService;
 
 import org.junit.jupiter.api.Test;
@@ -38,6 +39,9 @@ class OrderAssignmentControllerTest {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @MockitoBean
+    private JwtService jwtService;
 
     @MockitoBean
     private OrderAssignmentService orderAssignmentService;
