@@ -34,6 +34,13 @@ public class GlobalExceptionHandler {
         );
     }
 
+    @ExceptionHandler(ExternalServiceException.class)
+    public ResponseEntity<CustomErrorResponse> handleExternalServiceException(ExternalServiceException e) {
+        log.error("Error de comunicación con servicio externo: {}", e.getMessage());
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+                .body(new CustomErrorResponse(HttpStatus.SERVICE_UNAVAILABLE.value(), e.getMessage()));
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<CustomErrorResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         String mensaje = e.getBindingResult().getFieldErrors().stream()
