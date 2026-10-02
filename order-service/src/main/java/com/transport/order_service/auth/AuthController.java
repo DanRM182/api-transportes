@@ -4,6 +4,7 @@ import com.transport.order_service.auth.dto.LoginRequest;
 import com.transport.order_service.auth.dto.LoginResponse;
 import com.transport.order_service.security.JwtService;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 
 import lombok.RequiredArgsConstructor;
@@ -36,6 +37,11 @@ public class AuthController {
     }
 
     @PostMapping("/login")
+    @Operation(
+            summary = "Autenticación",
+            description = "Autentica al usuario y genera un token JWT",
+            security = {}
+    )
     public ResponseEntity<LoginResponse> login(
             @Valid @RequestBody LoginRequest request) {
 
