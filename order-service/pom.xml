@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.transport</groupId>
-	<artifactId>driver-service</artifactId>
+	<artifactId>order-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Api Driver</name>
-	<description>REST API para el manejo de conductores</description>
+	<name>Api Orders</name>
+	<description>REST API para el manejo de ordenes de transportes</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -45,6 +45,7 @@
 			<version>${jjwt.version}</version>
 			<scope>runtime</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-jackson</artifactId>
@@ -143,9 +144,9 @@
 									<version>${mapstruct.version}</version>
 								</path>
 								<path>
-									<groupId>org.projectlombok</groupId>
-									<artifactId>lombok-mapstruct-binding</artifactId>
-									<version>${lombok-mapstruct-binding.version}</version>
+								<groupId>org.projectlombok</groupId>
+								<artifactId>lombok-mapstruct-binding</artifactId>
+								<version>${lombok-mapstruct-binding.version}</version>
 								</path>
 							</annotationProcessorPaths>
 						</configuration>
