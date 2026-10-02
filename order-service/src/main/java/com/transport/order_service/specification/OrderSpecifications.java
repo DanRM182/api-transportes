@@ -1,7 +1,7 @@
 package com.transport.order_service.specification;
 
 import com.transport.order_service.dto.request.OrderFilterRequest;
-import com.transport.order_service.entity.Order;
+import com.transport.order_service.entities.Order;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.jpa.domain.Specification;
 

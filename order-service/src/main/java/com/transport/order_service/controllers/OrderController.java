@@ -1,10 +1,10 @@
-package com.transport.order_service.controller;
+package com.transport.order_service.controllers;
 
 import com.transport.order_service.dto.request.ChangeOrderStatusRequest;
 import com.transport.order_service.dto.request.CreateOrderRequest;
 import com.transport.order_service.dto.request.OrderFilterRequest;
 import com.transport.order_service.dto.response.OrderResponse;
-import com.transport.order_service.service.OrderService;
+import com.transport.order_service.services.OrderService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;

@@ -1,4 +1,4 @@
-package com.transport.order_service.service;
+package com.transport.order_service.services;
 
 import com.transport.order_service.dto.request.ChangeOrderStatusRequest;
 import com.transport.order_service.dto.request.CreateOrderRequest;

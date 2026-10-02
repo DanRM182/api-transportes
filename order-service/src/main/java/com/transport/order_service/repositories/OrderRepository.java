@@ -1,6 +1,6 @@
-package com.transport.order_service.repository;
+package com.transport.order_service.repositories;
 
-import com.transport.order_service.entity.Order;
+import com.transport.order_service.entities.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

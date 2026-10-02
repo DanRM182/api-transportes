@@ -1,4 +1,4 @@
-package com.transport.order_service.controller;
+package com.transport.order_service.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.transport.order_service.common.exception.IllegalOrderStatusTransition;
@@ -8,10 +8,8 @@ import com.transport.order_service.dto.request.CreateOrderRequest;
 import com.transport.order_service.dto.request.OrderFilterRequest;
 import com.transport.order_service.dto.response.OrderResponse;
 import com.transport.order_service.enums.OrderStatus;
-import com.transport.order_service.service.OrderService;
+import com.transport.order_service.services.OrderService;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;

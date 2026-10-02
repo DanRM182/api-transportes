@@ -1,11 +1,9 @@
-package com.transport.order_service.mapper;
+package com.transport.order_service.mappers;
 
-import com.transport.order_service.dto.request.ChangeOrderStatusRequest;
 import com.transport.order_service.dto.request.CreateOrderRequest;
 import com.transport.order_service.dto.response.OrderResponse;
-import com.transport.order_service.entity.Order;
+import com.transport.order_service.entities.Order;
 import org.mapstruct.Mapper;
-import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface OrderMapper {

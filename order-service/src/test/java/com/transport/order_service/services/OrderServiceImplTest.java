@@ -1,4 +1,4 @@
-package com.transport.order_service.service;
+package com.transport.order_service.services;
 
 import com.transport.order_service.common.exception.IllegalOrderStatusTransition;
 import com.transport.order_service.common.exception.ResourceNotFoundException;
@@ -6,10 +6,10 @@ import com.transport.order_service.dto.request.ChangeOrderStatusRequest;
 import com.transport.order_service.dto.request.CreateOrderRequest;
 import com.transport.order_service.dto.request.OrderFilterRequest;
 import com.transport.order_service.dto.response.OrderResponse;
-import com.transport.order_service.entity.Order;
+import com.transport.order_service.entities.Order;
 import com.transport.order_service.enums.OrderStatus;
-import com.transport.order_service.mapper.OrderMapper;
-import com.transport.order_service.repository.OrderRepository;
+import com.transport.order_service.mappers.OrderMapper;
+import com.transport.order_service.repositories.OrderRepository;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

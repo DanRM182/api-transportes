@@ -1,4 +1,4 @@
-package com.transport.order_service.entity;
+package com.transport.order_service.entities;
 
 import com.transport.order_service.common.exception.IllegalOrderStatusTransition;
 import com.transport.order_service.enums.OrderStatus;
@@ -52,7 +52,7 @@ public class Order {
             + " a " + newStatus.name());
     }
 
-    public Order(String origin, String destination) {
+    private Order(String origin, String destination) {
         this.status = OrderStatus.CREATED;
 
         this.origin = validateString(origin,
