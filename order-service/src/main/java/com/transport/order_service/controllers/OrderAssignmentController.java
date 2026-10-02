@@ -29,8 +29,7 @@ public class OrderAssignmentController {
         OrderAssignmentResponse response =
                 orderAssignmentService.assignDriver(orderId, request);
 
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
+        return ResponseEntity.status(HttpStatus.CREATED)
                 .body(response);
     }
 }
